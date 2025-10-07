@@ -1,0 +1,60 @@
+(AI_Doc_assistant) PS C:\Davinder\Udemy\LangChain-AIAgents-EdenMarco>  c:; cd 'c:\Davinder\Udemy\LangChain-AIAgents-EdenMarco'; & 'c:\Davinder\Udemy\LangChain-AIAgents-EdenMarco\LangchainProjects\AI_Doc_assistant\.venv\Scripts\python.exe' 'c:\Users\dpvir\.vscode\extensions\ms-python.debugpy-2025.10.0-win32-x64\bundled\libs\debugpy\launcher' '53591' '--' 'C:\Davinder\Udemy\LangChain-AIAgents-EdenMarco\LangchainProjects\AI_Doc_assistant\ingestion.py' 
+c:\Davinder\Udemy\LangChain-AIAgents-EdenMarco\LangchainProjects\AI_Doc_assistant\.venv\Lib\site-packages\langchain_pinecone\__init__.py:3: LangChainDeprecationWarning: As of langchain-core 0.3.0, LangChain uses pydantic v2 internally. The langchain_core.pydantic_v1 module was a compatibility shim for pydantic v1, and should no longer be used. Please update the code to import from Pydantic directly.
+
+For example, replace imports like: `from langchain_core.pydantic_v1 import BaseModel`
+with: `from pydantic import BaseModel`
+or the v1 compatibility namespace if you are working in a code base that has not been fully upgraded to pydantic 2 yet.  from pydantic.v1 import BaseModel
+
+  from langchain_pinecone.vectorstores import Pinecone, PineconeVectorStore
+
+============================================================
+🚀 Starting Document Ingestion and Indexing Process
+============================================================
+
+ℹ️  Loading documents from LangChain documentation website...
+ℹ️  Using Tavily batch processing for crawling and extracting web pages
+✅ Site map created with 20 pages to extract
+ℹ️  Processing 4 chunks of URLs for extraction
+
+============================================================
+🚀 Starting asynchronous extraction of text from URL batches
+============================================================
+
+ℹ️  Processing batch num: 1
+ℹ️  Processing batch num: 2
+ℹ️  Processing batch num: 3
+ℹ️  Processing batch num: 4
+✅ Extracted text from 5 URLs in batch 3
+✅ Extracted text from 5 URLs in batch 1
+✅ Extracted text from 4 URLs in batch 2
+✅ Extracted text from 4 URLs in batch 4
+✅ Successfully extracted text from 18 URLs with 0 failed batches
+✅ Extracted text from 18 URLs from LangChain documentation website
+
+============================================================
+🚀 Splitting documents into smaller chunks for embedding
+============================================================
+
+✅ Split into 89 chunks of text from 18 documents
+
+============================================================
+🚀 Starting asynchronous indexing of documents to vector store
+============================================================
+
+ℹ️  Total documents to index: 89
+ℹ️  Created 1 batches for indexing
+ℹ️  Indexing batch 1 with 89 documents
+✅ Successfully indexed batch 1
+✅ All batches indexed successfully.
+✅ Completed indexing all documents.
+
+============================================================
+🚀 INDEXING PIPELINE COMPLETED SUCCESSFULLY
+============================================================
+
+ℹ️  SUMMARY:
+ℹ️   URLs mapped: 20
+ℹ️   Documents extracted: 18
+ℹ️   Text chunks created: 89
+ℹ️   Vector store: Pinecone - langchain-doc-index
+(AI_Doc_assistant) PS C:\Davinder\Udemy\LangChain-AIAgents-EdenMarco> 

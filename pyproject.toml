@@ -16,6 +16,7 @@ dependencies = [
     "langchain-pinecone>=0.2.12",
     "langchain-tavily>=0.2.11",
     "nltk>=3.9.2",
+    "pinecone[asyncio]>=7.3.0",
     "python-dotenv>=1.1.1",
     "streamlit>=1.50.0",
     "streamlit-chat>=0.1.1",
