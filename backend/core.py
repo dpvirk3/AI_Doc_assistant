@@ -48,7 +48,13 @@ def run_llm (query: str):
     
     result = qa.invoke(input={"input": query})
 
-    return result
+    new_results = {
+        "query": result["input"],
+        "answer": result["answer"],
+        "source_documents": result["context"]
+    }
+
+    return new_results
 
 def main():
     print("Hello from backend of the AIDocAssitant")
@@ -59,6 +65,7 @@ def main():
     ######   anwer <--- answer from the llm
     ###### we can see the urls as [doc.metadata["source"] for doc in res["context"]]
     print (res["answer"])
+
 
 if __name__ == "__main__":
     main()
