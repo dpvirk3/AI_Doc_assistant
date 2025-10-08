@@ -29,15 +29,17 @@ def main():
     ### streamlit has session_state to store variables across runs
     ### streamlit runs in an infinite loop and re-runs the script on every user interaction
     ### initialize these here
-    if "user_prompt_history" not in st.session_state:
+    if ( "user_prompt_history" not in st.session_state
+        and "chat_answer_history" not in st.session_state
+        and "chat_history" not in st.session_state):
         st.session_state["user_prompt_history"] = []
-
-    if "chat_answer_history" not in st.session_state:
         st.session_state["chat_answer_history"] = []
+        ### chat_history holds a list of tuples (role, content) this is what langchain expects
+        st.session_state["chat_history"] = []
 
     if prompt:
         with st.spinner("Getting answer from AI..."):
-            response = run_llm(prompt)
+            response = run_llm(prompt, chat_history=st.session_state["chat_history"])
             # st.write("**Answer:**")
             # st.write(response["answer"])
             # st.write("**Source Documents:**")
@@ -49,6 +51,8 @@ def main():
 
             st.session_state["user_prompt_history"].append(prompt)
             st.session_state["chat_answer_history"].append(formatted_response)
+            st.session_state["chat_history"].append(("human",prompt))
+            st.session_state["chat_history"].append(("ai", formatted_response))
 
     if st.session_state["chat_answer_history"]:
         for generated_response, user_query in zip(
